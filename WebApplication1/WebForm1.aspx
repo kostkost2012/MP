@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
-
+<%@ Register Src="~/MyControl.ascx" TagName="my" TagPrefix="Tcustom" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,6 +21,7 @@
                         </asp:TreeNode>
                     </Nodes>
         </asp:TreeView>
+        <Tcustom:my ID="my1" runat="server"></Tcustom:my>
     </div>
     </form>
 </body>
