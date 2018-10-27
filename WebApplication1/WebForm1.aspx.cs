@@ -5,23 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace WebApplication1
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            button1.Value = "ass";
+            my1.OnValid += () => Label1.Text = "RIGHT";
+            my1.OnInvalid += () => Label1.Text = "WRONG";
         }
 
-        protected void convertoupper(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
-        {
-            button1.Value = TreeView1.SelectedNode.Text;
-        }
     }
 }
