@@ -11,7 +11,7 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            button1.Value = "ass";
+            //button1.Value = "ass";
         }
 
         protected void convertoupper(object sender, EventArgs e)
@@ -21,7 +21,7 @@ namespace WebApplication1
 
         protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
         {
-            button1.Value = TreeView1.SelectedNode.Text;
+            //button1.Value = TreeView1.SelectedNode.Text;
         }
     }
 }
