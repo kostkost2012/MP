@@ -11,17 +11,13 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            button1.Value = "ass";
+            //button1.Text = "ass";
         }
 
-        protected void convertoupper(object sender, EventArgs e)
+        protected void Page_PreInit(object sender, EventArgs e)
         {
-
-        }
-
-        protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
-        {
-            button1.Value = TreeView1.SelectedNode.Text;
+            if (Request.HttpMethod == "POST" && Request.Params.AllKeys.Contains("theme"))
+                Page.Theme = Request.Params["theme"]=="null" ? null : Request.Params["theme"];
         }
     }
 }

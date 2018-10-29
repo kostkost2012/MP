@@ -9,6 +9,8 @@ namespace WebApplication1
 {
     public partial class MyControl : System.Web.UI.UserControl
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
