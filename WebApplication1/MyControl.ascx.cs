@@ -19,7 +19,7 @@ namespace WebApplication1
             if(Request.HttpMethod=="POST")
             {
                 TextBox result = new TextBox();
-                result.Text = CheckPoll(connection).ToString();
+                result.Text = SavePoll(connection).ToString();
                 HtmlForm poll = new HtmlForm();
                 poll.Controls.Add(result);
                 Controls.Add(poll);
@@ -48,11 +48,13 @@ namespace WebApplication1
             Button submit = new Button();
             submit.ID = "submitButton";
             poll.Controls.Add(submit);
+
             Controls.Add(poll);
         }
 
-        protected int CheckPoll(SqlConnection conn)
+        protected int SavePoll(SqlConnection conn)
         {
+            Guid user = Guid.NewGuid();
             Dictionary<int, List<String>> answers = new Dictionary<int, List<string>>();
             Regex regex = new Regex(@"^my1\$(\d+)(?:\$\d+)?$");
             foreach (String param in Request.Params)
@@ -74,10 +76,10 @@ namespace WebApplication1
             foreach(KeyValuePair<int,List<String>> pair in answers)
             {
                 Question q = new Question(pair.Key, conn);
-                if (q.Valid(pair.Value))
-                    result++;
+                q.SaveAnswers(user, pair.Value, conn);
+                result++;
             }
-            return result;
+            return 0;
         }
 
         protected void Fill(Question q, HtmlForm form)
@@ -164,20 +166,19 @@ namespace WebApplication1
             conn.Close();
         }
 
-        //public Question(int id, int type, String text, List<String> answers, List<String> rightAnswers)
-        //{
-        //    this.id = id;
-        //    this.type = type;
-        //    this.text = text;
-        //    this.answers = answers;
-        //    this.rightAnswers = rightAnswers;
-        //}
-
-        public bool Valid(List<String> answ)
+        public bool SaveAnswers(Guid user, List<String> answ, SqlConnection conn)
         {
-            if (answ.Except(rightAnswers).Count() == 0 && answ.Count() == rightAnswers.Count())
-                return true;
-            return false;
+            foreach (String a in answ)
+            {
+                conn.Open();
+                String command = "INSERT INTO PollAnswers VALUES ('" + user.ToString() + "'," + this.id.ToString() + ",'"+a+"')";
+                SqlCommand sqlCommand = new SqlCommand(command, conn);
+                if (sqlCommand.ExecuteNonQuery() != 1)
+                    throw new Exception("not inserted");
+                conn.Close();
+            }
+            return true;
         }
+
     }
 }
