@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" masterPageFile="~/Page.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication1.WebForm2" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="header">
-    <asp:Label runat="server">HEADER static</asp:Label>
+    <asp:Label runat="server">HEADER dynamic</asp:Label>
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="content">

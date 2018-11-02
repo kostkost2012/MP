@@ -1,7 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" masterPageFile="~/Page.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm3.aspx.cs" Inherits="WebApplication1.WebForm3" MasterPageFile="~/Page.Master"%>
+<%@ MasterType TypeName="WebApplication1.Page"%>
+
 
 <asp:Content runat="server" ContentPlaceHolderID="header">
-    <asp:Label runat="server">HEADER static</asp:Label>
+    <asp:Label runat="server">HEADER typed</asp:Label>
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="content">
@@ -18,3 +20,4 @@
         </asp:TreeView>
     </div>
 </asp:Content>
+

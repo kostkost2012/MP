@@ -10,7 +10,7 @@
 namespace WebApplication1 {
     
     
-    public partial class WebForm1 {
+    public partial class WebForm2 {
         
         /// <summary>
         /// TreeView1 элемент управления.

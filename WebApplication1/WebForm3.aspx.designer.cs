@@ -10,7 +10,7 @@
 namespace WebApplication1 {
     
     
-    public partial class WebForm1 {
+    public partial class WebForm3 {
         
         /// <summary>
         /// TreeView1 элемент управления.
@@ -20,5 +20,17 @@ namespace WebApplication1 {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TreeView TreeView1;
+        
+        /// <summary>
+        /// Master свойство.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое свойство.
+        /// </remarks>
+        public new WebApplication1.Page Master {
+            get {
+                return ((WebApplication1.Page)(base.Master));
+            }
+        }
     }
 }
